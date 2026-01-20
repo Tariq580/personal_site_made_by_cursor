@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="A minimal personal terminal — type commands to explore.">
+  <title>terminal</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- Terminal Window -->
+  <div class="terminal">
+    <div class="terminal-header">
+      <span class="terminal-btn red"></span>
+      <span class="terminal-btn yellow"></span>
+      <span class="terminal-btn green"></span>
+      <span class="terminal-title">arian@site:~</span>
+    </div>
+    
+    <div class="terminal-body">
+      <div id="output" class="output-area"></div>
+      
+      <div class="input-line">
+        <span class="prompt-symbol">$</span>
+        <input type="text" id="cmd-input" autocomplete="off" autocapitalize="off" spellcheck="false" autofocus>
+      </div>
+    </div>
+  </div>
+
+  <!-- Hidden Content Templates -->
+  <div id="templates" style="display:none;">
+
+    <!-- BOOT SEQUENCE -->
+    <template id="tpl-boot">
+<pre id="ascii-typing" class="ascii-banner"></pre>
+<p class="intro-msg"></p>
+<p class="welcome-msg"></p>
+    </template>
+
+    <!-- HELP -->
+    <template id="tpl-help">
+<p class="cmd-echo">$ help</p>
+<pre class="help-text">
+Available commands:
+
+  now       - what I'm currently working on
+  writing   - notes and essays
+  work      - projects, experiments, ideas
+  life      - reading, places, favorites
+  links     - socials and bookmarks
+  about     - about me and this site
+  
+  clear     - clear the terminal
+  help      - show this message
+
+Aliases:
+  cat now.txt, cat writing.txt, etc.
+  ls        - same as help
+</pre>
+    </template>
+
+    <!-- NOW -->
+    <template id="tpl-now">
+<p class="cmd-echo">$ cat ~/now.txt</p>
+<h2># Now</h2>
+<p class="meta">Last updated: January 2026</p>
+
+<h3>## Working on</h3>
+<ul>
+  <li>Building this personal website. Trying to keep it minimal.</li>
+  <li>Writing more regularly. Short notes, longer essays, whatever comes.</li>
+  <li>Taking a break from client work to focus on personal projects.</li>
+</ul>
+
+<h3>## Reading</h3>
+<ul>
+  <li>Four Thousand Weeks by Oliver Burkeman — finished, still thinking about it</li>
+  <li>Designing Calm Technology — in progress</li>
+</ul>
+
+<h3>## Thinking about</h3>
+<ul>
+  <li>The difference between productivity and meaningful work</li>
+  <li>How tools shape the way we think</li>
+  <li>What "enough" means in practice</li>
+</ul>
+<p class="nav-hint">↑↓ history · tab autocomplete · type another command or 'help'</p>
+    </template>
+
+    <!-- WRITING -->
+    <template id="tpl-writing">
+<p class="cmd-echo">$ ls ~/writing/</p>
+<h2># Writing</h2>
+
+<article>
+  <h3>>> Is This Really Education?</h3>
+  <time>2026-01-08</time>
+  <p>Right now, I am sitting here in a physics class. The teacher has been talking for over 40 minutes, but none of the students, including me, seem to care about what he is saying.</p>
+  <p>None of us wants to be in this class, and we're clearly not interested. Yet somehow, we've been placed here, either by our parents or by society.</p>
+  <details>
+    <summary>[+] Read more</summary>
+    <p>And I don't think this is just happening here in Japan, I believe it's happening in many countries around the world. The education system is broken and outdated.</p>
+    <p>The other day, I saw a student at our school who didn't even know how to use ChatGPT. Why? Because we're not being taught about tools like that.</p>
+    <p>Sometimes I wonder: What if schools taught things like coding, content creation, AI, and communication skills?</p>
+    <p>So the real question is: For how long will education continue like this?</p>
+  </details>
+</article>
+
+<article>
+  <h3>>> On Simplicity</h3>
+  <time>2026-01-07</time>
+  <p>Simplicity is not the absence of complexity. It is the result of thoughtful reduction. Every element that remains has earned its place.</p>
+  <details>
+    <summary>[+] Read more</summary>
+    <p>The temptation is always to add more. Another feature, another option, another layer of abstraction. But each addition carries weight.</p>
+    <p>The best interfaces disappear. They become invisible, allowing the content to speak.</p>
+  </details>
+</article>
+
+<article>
+  <h3>>> Writing in Public</h3>
+  <time>2026-01-03</time>
+  <p>There is something clarifying about writing for an audience, even an imagined one. Private notes can be sloppy, incomplete. Public writing demands coherence.</p>
+</article>
+
+<article>
+  <h3>>> Slow Tools</h3>
+  <time>2025-12-20</time>
+  <p>Fast tools encourage fast work. They optimize for throughput, for shipping, for the next thing. But some work benefits from friction.</p>
+</article>
+
+<article>
+  <h3>>> On friction in tools</h3>
+  <time>2026-01-06</time>
+  <p>Friction isn't always bad. Some friction creates space for thought.</p>
+</article>
+
+<article>
+  <h3>>> Defaults matter</h3>
+  <time>2026-01-04</time>
+  <p>Most people never change the defaults. This makes the default the most important design decision.</p>
+</article>
+
+<article>
+  <h3>>> The value of quiet software</h3>
+  <time>2025-12-28</time>
+  <p>Quiet software doesn't demand attention. It doesn't notify, badge, or interrupt. It waits until you need it.</p>
+</article>
+<p class="nav-hint">↑↓ history · tab autocomplete · type another command or 'help'</p>
+    </template>
+
+    <!-- WORK -->
+    <template id="tpl-work">
+<p class="cmd-echo">$ ls -la ~/work/</p>
+<h2># Work</h2>
+
+<h3>## Projects</h3>
+<ul class="project-list">
+  <li><span class="name">Personal Site</span> <span class="status">[in-progress]</span>
+    <p>This website. Plain HTML, CSS, minimal JavaScript.</p></li>
+  <li><span class="name">Plain Text Notes</span> <span class="status">[shipped]</span>
+    <p>A note-taking system using plain text files.</p></li>
+  <li><span class="name">Bookmark Exporter</span> <span class="status">[shipped]</span>
+    <p>A bookmarklet that exports browser bookmarks to plain text.</p></li>
+  <li><span class="name">Reading Tracker</span> <span class="status">[paused]</span>
+    <p>A web app to track books. Realized a text file works fine.</p></li>
+  <li><span class="name">Habit Tracker</span> <span class="status">[failed]</span>
+    <p>Scope crept, motivation dropped, abandoned.</p></li>
+</ul>
+
+<h3>## Experiments</h3>
+<ul class="project-list">
+  <li><span class="name">Minimal CSS Framework</span> <time>2026-01-05</time>
+    <p>CSS framework with no classes. Just semantic HTML.</p></li>
+  <li><span class="name">Static Site Search</span> <time>2025-12-10</time>
+    <p>Client-side search for static websites.</p></li>
+  <li><span class="name">CSS-Only Dark Mode</span> <time>2025-09-22</time>
+    <p>Dark mode toggle using only CSS.</p></li>
+</ul>
+
+<h3>## Ideas</h3>
+<ul class="idea-list">
+  <li><span class="name">Local-first sync system</span> <span class="status">[open]</span>
+    <p>Sync plain text files without a cloud service.</p></li>
+  <li><span class="name">Minimal email client</span> <span class="status">[cooking]</span>
+    <p>Text-based interface to Gmail/Fastmail APIs.</p></li>
+  <li><span class="name">Distraction-free writing tool</span> <span class="status">[open]</span>
+    <p>Just text. No formatting, no word count.</p></li>
+</ul>
+<p class="nav-hint">↑↓ history · tab autocomplete · type another command or 'help'</p>
+    </template>
+
+    <!-- LIFE -->
+    <template id="tpl-life">
+<p class="cmd-echo">$ cat ~/life/*</p>
+<h2># Life</h2>
+
+<h3>## Reading</h3>
+<ul class="reading-list">
+  <li><span class="name">Four Thousand Weeks</span> <span class="author">— Oliver Burkeman</span> <span class="status">[finished]</span></li>
+  <li><span class="name">Designing Calm Technology</span> <span class="author">— Amber Case</span> <span class="status">[reading]</span></li>
+  <li><span class="name">The Craftsman</span> <span class="author">— Richard Sennett</span> <span class="status">[to-read]</span></li>
+  <li><span class="name">Shape Up</span> <span class="author">— Ryan Singer</span> <span class="status">[finished]</span></li>
+  <li><span class="name">Deep Work</span> <span class="author">— Cal Newport</span> <span class="status">[finished]</span></li>
+</ul>
+
+<h3>## Places</h3>
+<ul class="places-list">
+  <li><span class="name">Tokyo</span> <time>2024</time> <p>Quiet in unexpected ways. Vending machines everywhere.</p></li>
+  <li><span class="name">Lisbon</span> <time>2023</time> <p>Hills and light. The yellow trams. Tiles everywhere.</p></li>
+  <li><span class="name">Edinburgh</span> <time>2022</time> <p>Two cities stacked on each other. Second-hand bookshops.</p></li>
+  <li><span class="name">Amsterdam</span> <time>2022</time> <p>Bikes as infrastructure. A city designed for people.</p></li>
+</ul>
+
+<h3>## Favorites</h3>
+<details>
+  <summary>[+] Books</summary>
+  <ul>
+    <li>Siddhartha — Hermann Hesse</li>
+    <li>Meditations — Marcus Aurelius</li>
+    <li>The Elements of Style — Strunk & White</li>
+    <li>The War of Art — Steven Pressfield</li>
+  </ul>
+</details>
+<details>
+  <summary>[+] Films</summary>
+  <ul>
+    <li>Lost in Translation — Sofia Coppola</li>
+    <li>Blade Runner — Ridley Scott</li>
+    <li>Spirited Away — Hayao Miyazaki</li>
+    <li>Jiro Dreams of Sushi — David Gelb</li>
+  </ul>
+</details>
+<details>
+  <summary>[+] Music</summary>
+  <ul>
+    <li>Kind of Blue — Miles Davis</li>
+    <li>In Rainbows — Radiohead</li>
+    <li>Ambient 1: Music for Airports — Brian Eno</li>
+  </ul>
+</details>
+<p class="nav-hint">↑↓ history · tab autocomplete · type another command or 'help'</p>
+    </template>
+
+    <!-- LINKS -->
+    <template id="tpl-links">
+<p class="cmd-echo">$ cat ~/bookmarks.txt</p>
+<h2># Links</h2>
+
+<h3>## Socials</h3>
+<ul>
+  <li><a href="https://x.com/TechWithArian" target="_blank">X (Twitter)</a></li>
+  <li><a href="https://github.com/Tariq580" target="_blank">GitHub</a></li>
+</ul>
+
+<h3>## X posts</h3>
+<ul>
+  <li><a href="https://gwern.net" target="_blank">Gwern.net</a> — long-form essays on everything</li>
+  <li><a href="https://patrickcollison.com" target="_blank">Patrick Collison</a> — simple, text-focused</li>
+  <li><a href="https://sive.rs" target="_blank">Derek Sivers</a> — clear thinking, short essays</li>
+</ul>
+
+<h3>## Books</h3>
+<ul>
+  <li><span class="name">48 Laws of Power</span> — I'm reading it now and so many great secrets are in this book</li>
+  <li><span class="name">To Kill a Mockingbird</span> — my first fiction book and its becoming my favorite</li>
+  <li><span class="name">Atomic Habits</span> — first book I read about habits and it stunned me</li>
+</ul>
+<p class="nav-hint">↑↓ history · tab autocomplete · type another command or 'help'</p>
+    </template>
+
+    <!-- ABOUT -->
+    <template id="tpl-about">
+<p class="cmd-echo">$ cat ~/about.txt</p>
+<h2># About</h2>
+
+<p>I write about design, tools, and process. I'm interested in how the things we build shape the way we think.</p>
+<p>This site is where I work through ideas in public. Some posts are finished. Some are drafts. All are subject to revision.</p>
+
+<h3>## This Site</h3>
+<p>Built with plain HTML, CSS, and minimal JavaScript. No build tools, no frameworks, no dependencies.</p>
+<ul>
+  <li>Type: System monospace fonts</li>
+  <li>Colors: Green (#00ff66) on black (#0a0a0a)</li>
+  <li>Interface: Interactive terminal</li>
+  <li>Source: View-source friendly</li>
+</ul>
+
+<h3>## Contact</h3>
+<p>Email: <a href="mailto:hello@example.com">hello@example.com</a></p>
+<p class="nav-hint">↑↓ history · tab autocomplete · type another command or 'help'</p>
+    </template>
+
+    <!-- EASTER EGGS -->
+    <template id="tpl-sudo">
+<p class="cmd-echo">$ sudo</p>
+<p class="error">Permission denied. Nice try though. 😏</p>
+    </template>
+
+    <template id="tpl-unknown">
+<p class="cmd-echo">$ {cmd}</p>
+<p class="error">Command not found: {cmd}</p>
+<p class="hint">Type 'help' for available commands.</p>
+    </template>
+
+    <template id="tpl-clear">
+    </template>
+
+  </div>
+
+  <!-- No-JS Fallback -->
+  <noscript>
+    <div class="noscript-fallback">
+      <h1>Terminal requires JavaScript</h1>
+      <p>Please enable JavaScript to use this interactive terminal, or view the <a href="https://github.com/Tariq580">source on GitHub</a>.</p>
+    </div>
+  </noscript>
+
+  <script src="app.js"></script>
+</body>
+</html>

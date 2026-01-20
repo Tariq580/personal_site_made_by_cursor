@@ -1,0 +1,548 @@
+/* ==========================================================================
+   Interactive Terminal - Green on Black
+   ========================================================================== */
+
+:root {
+  --green: #00ff66;
+  --green-dim: #00aa44;
+  --green-bright: #33ff88;
+  --black: #0a0a0a;
+  --dark: #111;
+  --gray: #1a1a1a;
+  --red: #ff5f56;
+  --yellow: #ffbd2e;
+  --green-btn: #27c93f;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  font-family: "SF Mono", "Fira Code", "Fira Mono", "Roboto Mono", "Lucida Console", Monaco, monospace;
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--green);
+  background: #000;
+}
+
+::selection {
+  background: var(--green);
+  color: var(--black);
+}
+
+/* ==========================================================================
+   Page Layout - Centered Terminal
+   ========================================================================== */
+
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 20px;
+}
+
+/* ==========================================================================
+   Terminal Window
+   ========================================================================== */
+
+.terminal {
+  width: 100%;
+  max-width: 750px;
+  height: 85vh;
+  max-height: 700px;
+  background: var(--black);
+  border: 1px solid var(--green-dim);
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 
+    0 0 0 1px rgba(0, 255, 102, 0.1),
+    0 20px 60px rgba(0, 0, 0, 0.5),
+    0 0 100px rgba(0, 255, 102, 0.05);
+}
+
+/* Terminal Header (Title Bar) */
+.terminal-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 16px;
+  background: var(--dark);
+  border-bottom: 1px solid var(--green-dim);
+  border-radius: 8px 8px 0 0;
+  user-select: none;
+}
+
+.terminal-btn {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+}
+
+.terminal-btn.red { background: var(--red); }
+.terminal-btn.yellow { background: var(--yellow); }
+.terminal-btn.green { background: var(--green-btn); }
+
+.terminal-title {
+  margin-left: auto;
+  margin-right: auto;
+  color: var(--green-dim);
+  font-size: 12px;
+}
+
+/* Terminal Body */
+.terminal-body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  padding: 16px;
+}
+
+/* Output Area */
+.output-area {
+  flex: 1;
+  overflow-y: auto;
+  padding-right: 8px;
+  margin-bottom: 16px;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Boot screen centering */
+.output-area.boot-centered {
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.output-area.boot-centered .ascii-banner {
+  text-align: left;
+  display: inline-block;
+}
+
+.output-area.boot-centered .intro-msg,
+.output-area.boot-centered .welcome-msg {
+  text-align: center;
+}
+
+.boot-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Custom Scrollbar */
+.output-area::-webkit-scrollbar {
+  width: 6px;
+}
+
+.output-area::-webkit-scrollbar-track {
+  background: var(--black);
+}
+
+.output-area::-webkit-scrollbar-thumb {
+  background: var(--green-dim);
+  border-radius: 3px;
+}
+
+.output-area::-webkit-scrollbar-thumb:hover {
+  background: var(--green);
+}
+
+/* Input Line */
+.input-line {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding-top: 8px;
+  border-top: 1px solid var(--gray);
+}
+
+.prompt-symbol {
+  color: var(--green);
+  font-weight: bold;
+}
+
+#cmd-input {
+  flex: 1;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: var(--green-bright);
+  font-family: inherit;
+  font-size: inherit;
+  caret-color: var(--green);
+}
+
+#cmd-input::placeholder {
+  color: var(--green-dim);
+  opacity: 0.5;
+}
+
+/* ==========================================================================
+   Output Content Styling
+   ========================================================================== */
+
+/* Command Echo */
+.cmd-echo {
+  color: var(--green-dim);
+  margin: 0 0 1rem 0;
+}
+
+/* Boot Sequence */
+.boot-text {
+  color: var(--green-dim);
+  margin: 0;
+  font-size: 12px;
+  line-height: 1.8;
+}
+
+.ascii-banner {
+  color: var(--green-bright);
+  margin: 0.5rem 0 1.5rem 0;
+  font-size: 9px;
+  line-height: 1.15;
+  letter-spacing: -0.5px;
+}
+
+.intro-msg {
+  color: var(--green-dim);
+  margin: 1rem 0 0.75rem 0;
+  font-size: 0.85rem;
+  max-width: 500px;
+  line-height: 1.6;
+}
+
+.welcome-msg {
+  color: var(--green);
+  margin: 0.5rem 0 0 0;
+  font-size: 0.9rem;
+}
+
+.cmd-hint {
+  color: var(--green-bright);
+  background: var(--gray);
+  padding: 2px 6px;
+  border-radius: 2px;
+}
+
+/* Help Text */
+.help-text {
+  margin: 0;
+  color: var(--green);
+  line-height: 1.8;
+}
+
+/* Headings */
+h2 {
+  font-size: 1rem;
+  font-weight: normal;
+  color: var(--green-bright);
+  margin: 0 0 1rem 0;
+}
+
+h3 {
+  font-size: 0.9rem;
+  font-weight: normal;
+  color: var(--green);
+  margin: 1.5rem 0 0.75rem 0;
+}
+
+/* Paragraphs */
+p {
+  margin: 0 0 0.75rem 0;
+}
+
+.meta {
+  color: var(--green-dim);
+  font-size: 0.85rem;
+  margin-bottom: 1.5rem;
+}
+
+/* Links */
+a {
+  color: var(--green-bright);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* Time */
+time {
+  color: var(--green-dim);
+  font-size: 0.8rem;
+}
+
+/* Lists */
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 1rem 0;
+}
+
+li {
+  padding-left: 1.25rem;
+  margin-bottom: 0.5rem;
+  position: relative;
+}
+
+li::before {
+  content: "-";
+  position: absolute;
+  left: 0;
+  color: var(--green-dim);
+}
+
+/* Project / Reading Lists */
+.project-list li,
+.idea-list li,
+.reading-list li,
+.places-list li {
+  margin-bottom: 1rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px dashed var(--gray);
+}
+
+.project-list li:last-child,
+.idea-list li:last-child,
+.reading-list li:last-child,
+.places-list li:last-child {
+  border-bottom: none;
+}
+
+.project-list li::before,
+.idea-list li::before,
+.reading-list li::before,
+.places-list li::before {
+  content: ">";
+}
+
+.name {
+  color: var(--green-bright);
+}
+
+.author {
+  color: var(--green-dim);
+  font-size: 0.85rem;
+}
+
+.status {
+  color: var(--green-dim);
+  font-size: 0.75rem;
+  margin-left: 0.5rem;
+}
+
+.project-list p,
+.idea-list p,
+.places-list p {
+  margin: 0.25rem 0 0 0;
+  color: var(--green-dim);
+  font-size: 0.85rem;
+}
+
+/* Articles */
+article {
+  margin-bottom: 1.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px dashed var(--gray);
+}
+
+article:last-child {
+  border-bottom: none;
+}
+
+article h3 {
+  margin-top: 0;
+  color: var(--green-bright);
+}
+
+article time {
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+/* Details / Expandable */
+details {
+  margin: 0.75rem 0;
+}
+
+summary {
+  cursor: pointer;
+  color: var(--green-dim);
+  font-size: 0.85rem;
+}
+
+summary:hover {
+  color: var(--green);
+}
+
+details[open] summary {
+  margin-bottom: 0.5rem;
+}
+
+details ul {
+  margin-top: 0.5rem;
+  padding-left: 1rem;
+}
+
+/* Error Messages */
+.error {
+  color: var(--red);
+}
+
+.hint {
+  color: var(--green-dim);
+  font-size: 0.85rem;
+}
+
+/* Navigation Hint */
+.nav-hint {
+  margin-top: 2rem;
+  padding-top: 1rem;
+  border-top: 1px dashed var(--gray);
+  color: var(--green-dim);
+  font-size: 0.7rem;
+  opacity: 0.6;
+}
+
+/* ==========================================================================
+   Boot Sequence Animation
+   ========================================================================== */
+
+.boot-line {
+  opacity: 0;
+  animation: fadeIn 0.1s forwards;
+}
+
+@keyframes fadeIn {
+  to { opacity: 1; }
+}
+
+/* Typing Cursor */
+.typing-cursor {
+  display: inline-block;
+  width: 8px;
+  height: 14px;
+  background: var(--green);
+  animation: blink 1s step-end infinite;
+  vertical-align: middle;
+  margin-left: 2px;
+}
+
+@keyframes blink {
+  0%, 50% { opacity: 1; }
+  51%, 100% { opacity: 0; }
+}
+
+/* ==========================================================================
+   No-JS Fallback
+   ========================================================================== */
+
+.noscript-fallback {
+  text-align: center;
+  padding: 2rem;
+}
+
+.noscript-fallback h1 {
+  color: var(--green-bright);
+  font-weight: normal;
+  font-size: 1.2rem;
+}
+
+.noscript-fallback p {
+  color: var(--green-dim);
+}
+
+/* ==========================================================================
+   Mobile Responsive
+   ========================================================================== */
+
+@media (max-width: 600px) {
+  body {
+    padding: 10px;
+  }
+  
+  .terminal {
+    height: 95vh;
+    max-height: none;
+    border-radius: 0;
+  }
+  
+  .terminal-header {
+    border-radius: 0;
+  }
+  
+  .ascii-banner {
+    font-size: 6px;
+  }
+  
+  .terminal-body {
+    padding: 12px;
+  }
+}
+
+/* ==========================================================================
+   Autocomplete Dropdown
+   ========================================================================== */
+
+.autocomplete {
+  position: absolute;
+  bottom: 100%;
+  left: 0;
+  background: var(--dark);
+  border: 1px solid var(--green-dim);
+  border-radius: 4px;
+  margin-bottom: 4px;
+  display: none;
+}
+
+.autocomplete.show {
+  display: block;
+}
+
+.autocomplete-item {
+  padding: 6px 12px;
+  cursor: pointer;
+  color: var(--green);
+}
+
+.autocomplete-item:hover,
+.autocomplete-item.selected {
+  background: var(--green-dim);
+  color: var(--black);
+}
+
+/* ==========================================================================
+   Print (just hide terminal frame)
+   ========================================================================== */
+
+@media print {
+  body {
+    background: #fff;
+  }
+  
+  .terminal {
+    border: none;
+    box-shadow: none;
+    max-width: none;
+    height: auto;
+    max-height: none;
+  }
+  
+  .terminal-header,
+  .input-line {
+    display: none;
+  }
+  
+  .output-area {
+    color: #000;
+  }
+}
