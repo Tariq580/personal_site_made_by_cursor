@@ -44,19 +44,15 @@
 <pre class="help-text">
 Available commands:
 
-  now       - what I'm currently working on
-  writing   - notes and essays
-  work      - projects, experiments, ideas
-  life      - reading, places, favorites
-  links     - socials and bookmarks
-  about     - about me and this site
+  now        what I'm currently up to
+  writing    notes and essays
+  work       projects, experiments, ideas
+  life       reading, places, favorites
+  links      socials and bookmarks
+  about      about me and this site
   
-  clear     - clear the terminal
-  help      - show this message
-
-Aliases:
-  cat now.txt, cat writing.txt, etc.
-  ls        - same as help
+  clear      clear the terminal
+  help       show this message
 </pre>
     </template>
 
@@ -66,181 +62,474 @@ Aliases:
 <h2># Now</h2>
 <p class="meta">Last updated: January 2026</p>
 
-<h3>## Working on</h3>
-<ul>
-  <li>Building this personal website. Trying to keep it minimal.</li>
-  <li>Writing more regularly. Short notes, longer essays, whatever comes.</li>
-  <li>Taking a break from client work to focus on personal projects.</li>
-</ul>
+<div class="kv-list">
+  <div class="kv-row"><span class="kv-key">working on</span><span class="kv-val">this site, writing more regularly, personal projects</span></div>
+  <div class="kv-row"><span class="kv-key">reading</span><span class="kv-val">Four Thousand Weeks (finished), Designing Calm Technology (in progress)</span></div>
+  <div class="kv-row"><span class="kv-key">thinking</span><span class="kv-val">productivity vs meaning, how tools shape thought, what "enough" means</span></div>
+</div>
+<p class="nav-hint">type a section name to expand · or another command</p>
+    </template>
 
-<h3>## Reading</h3>
-<ul>
-  <li>Four Thousand Weeks by Oliver Burkeman — finished, still thinking about it</li>
-  <li>Designing Calm Technology — in progress</li>
-</ul>
+    <!-- NOW SUB-SECTIONS -->
+    <template id="tpl-now-working">
+<p class="cmd-echo">$ cat ~/now/working.txt</p>
+<h2># Working on</h2>
 
-<h3>## Thinking about</h3>
-<ul>
-  <li>The difference between productivity and meaningful work</li>
-  <li>How tools shape the way we think</li>
-  <li>What "enough" means in practice</li>
-</ul>
-<p class="nav-hint">↑↓ history · tab autocomplete · type another command or 'help'</p>
+<div class="detail-list">
+  <div class="detail-item">
+    <span class="detail-name">→ this site</span>
+    <p class="detail-desc">Building an interactive terminal-style personal site. Plain HTML, CSS, and minimal JavaScript. No frameworks, no build tools.</p>
+  </div>
+  <div class="detail-item">
+    <span class="detail-name">→ writing more</span>
+    <p class="detail-desc">Short notes, longer essays, whatever comes. Trying to publish regularly and think in public.</p>
+  </div>
+  <div class="detail-item">
+    <span class="detail-name">→ personal projects</span>
+    <p class="detail-desc">Taking a break from client work to focus on what interests me. Building tools I want to use.</p>
+  </div>
+</div>
+<p class="nav-hint">type 'back' to return to now · or another command</p>
+    </template>
+
+    <template id="tpl-now-reading">
+<p class="cmd-echo">$ cat ~/now/reading.txt</p>
+<h2># Reading</h2>
+
+<div class="detail-list">
+  <div class="detail-item">
+    <span class="detail-name">→ Four Thousand Weeks</span>
+    <span class="detail-status">[finished]</span>
+    <p class="detail-desc">Oliver Burkeman on time management and mortality. Still thinking about the idea that we'll never "clear the decks" — there will always be more to do than time allows.</p>
+  </div>
+  <div class="detail-item">
+    <span class="detail-name">→ Designing Calm Technology</span>
+    <span class="detail-status">[in progress]</span>
+    <p class="detail-desc">Amber Case on technology that respects human attention. The idea of "calm" as a design principle resonates deeply.</p>
+  </div>
+</div>
+<p class="nav-hint">type 'back' to return to now · or another command</p>
+    </template>
+
+    <template id="tpl-now-thinking">
+<p class="cmd-echo">$ cat ~/now/thinking.txt</p>
+<h2># Thinking about</h2>
+
+<div class="detail-list">
+  <div class="detail-item">
+    <span class="detail-name">→ productivity vs meaning</span>
+    <p class="detail-desc">Is getting more done the goal? Or is it about doing the right things? The hustle culture vs. slow living debate.</p>
+  </div>
+  <div class="detail-item">
+    <span class="detail-name">→ how tools shape thought</span>
+    <p class="detail-desc">The medium is the message. A notes app that's fast encourages different thinking than one that's slow. What do my tools optimize for?</p>
+  </div>
+  <div class="detail-item">
+    <span class="detail-name">→ what "enough" means</span>
+    <p class="detail-desc">When do you have enough money, enough stuff, enough success? Most people never define this, so they never reach it.</p>
+  </div>
+</div>
+<p class="nav-hint">type 'back' to return to now · or another command</p>
     </template>
 
     <!-- WRITING -->
     <template id="tpl-writing">
 <p class="cmd-echo">$ ls ~/writing/</p>
 <h2># Writing</h2>
+<p class="meta">Type <span class="cmd-hint">read &lt;n&gt;</span> to open an article.</p>
 
-<article>
-  <h3>>> Is This Really Education?</h3>
-  <time>2026-01-08</time>
-  <p>Right now, I am sitting here in a physics class. The teacher has been talking for over 40 minutes, but none of the students, including me, seem to care about what he is saying.</p>
-  <p>None of us wants to be in this class, and we're clearly not interested. Yet somehow, we've been placed here, either by our parents or by society.</p>
-  <details>
-    <summary>[+] Read more</summary>
+<div class="article-list">
+  <div class="article-row"><span class="article-num">[1]</span><span class="article-title">Is This Really Education?</span><span class="article-date">2026-01-08</span></div>
+  <div class="article-row"><span class="article-num">[2]</span><span class="article-title">On Simplicity</span><span class="article-date">2026-01-07</span></div>
+  <div class="article-row"><span class="article-num">[3]</span><span class="article-title">On friction in tools</span><span class="article-date">2026-01-06</span></div>
+  <div class="article-row"><span class="article-num">[4]</span><span class="article-title">Defaults matter</span><span class="article-date">2026-01-04</span></div>
+  <div class="article-row"><span class="article-num">[5]</span><span class="article-title">Writing in Public</span><span class="article-date">2026-01-03</span></div>
+  <div class="article-row"><span class="article-num">[6]</span><span class="article-title">The value of quiet software</span><span class="article-date">2025-12-28</span></div>
+  <div class="article-row"><span class="article-num">[7]</span><span class="article-title">Slow Tools</span><span class="article-date">2025-12-20</span></div>
+</div>
+<p class="nav-hint">↑↓ history · tab autocomplete · type another command or 'help'</p>
+    </template>
+
+    <!-- INDIVIDUAL ARTICLES -->
+    <template id="tpl-article-1">
+<p class="cmd-echo">$ cat ~/writing/education.txt</p>
+<article class="full-article">
+  <h2>Is This Really Education?</h2>
+  <p class="article-meta">January 8, 2026</p>
+  
+  <div class="article-body">
+    <p>Right now, I am sitting here in a physics class. The teacher has been talking for over 40 minutes, but none of the students, including me, seem to care about what he is saying.</p>
+    <p>None of us wants to be in this class, and we're clearly not interested. Yet somehow, we've been placed here, either by our parents or by society.</p>
     <p>And I don't think this is just happening here in Japan, I believe it's happening in many countries around the world. The education system is broken and outdated.</p>
     <p>The other day, I saw a student at our school who didn't even know how to use ChatGPT. Why? Because we're not being taught about tools like that.</p>
     <p>Sometimes I wonder: What if schools taught things like coding, content creation, AI, and communication skills?</p>
     <p>So the real question is: For how long will education continue like this?</p>
-  </details>
+  </div>
 </article>
+<p class="nav-hint">type 'writing' to go back · or enter another command</p>
+    </template>
 
-<article>
-  <h3>>> On Simplicity</h3>
-  <time>2026-01-07</time>
-  <p>Simplicity is not the absence of complexity. It is the result of thoughtful reduction. Every element that remains has earned its place.</p>
-  <details>
-    <summary>[+] Read more</summary>
+    <template id="tpl-article-2">
+<p class="cmd-echo">$ cat ~/writing/simplicity.txt</p>
+<article class="full-article">
+  <h2>On Simplicity</h2>
+  <p class="article-meta">January 7, 2026</p>
+  
+  <div class="article-body">
+    <p>Simplicity is not the absence of complexity. It is the result of thoughtful reduction. Every element that remains has earned its place.</p>
     <p>The temptation is always to add more. Another feature, another option, another layer of abstraction. But each addition carries weight.</p>
     <p>The best interfaces disappear. They become invisible, allowing the content to speak.</p>
-  </details>
+  </div>
 </article>
+<p class="nav-hint">type 'writing' to go back · or enter another command</p>
+    </template>
 
-<article>
-  <h3>>> Writing in Public</h3>
-  <time>2026-01-03</time>
-  <p>There is something clarifying about writing for an audience, even an imagined one. Private notes can be sloppy, incomplete. Public writing demands coherence.</p>
+    <template id="tpl-article-3">
+<p class="cmd-echo">$ cat ~/writing/friction.txt</p>
+<article class="full-article">
+  <h2>On friction in tools</h2>
+  <p class="article-meta">January 6, 2026</p>
+  
+  <div class="article-body">
+    <p>Friction isn't always bad. Some friction creates space for thought.</p>
+    <p>When everything is instant, we lose the pause. The moment to reconsider. The chance to change our minds before committing.</p>
+    <p>The best tools know when to slow you down.</p>
+  </div>
 </article>
+<p class="nav-hint">type 'writing' to go back · or enter another command</p>
+    </template>
 
-<article>
-  <h3>>> Slow Tools</h3>
-  <time>2025-12-20</time>
-  <p>Fast tools encourage fast work. They optimize for throughput, for shipping, for the next thing. But some work benefits from friction.</p>
+    <template id="tpl-article-4">
+<p class="cmd-echo">$ cat ~/writing/defaults.txt</p>
+<article class="full-article">
+  <h2>Defaults matter</h2>
+  <p class="article-meta">January 4, 2026</p>
+  
+  <div class="article-body">
+    <p>Most people never change the defaults. This makes the default the most important design decision.</p>
+    <p>If you want people to do something, make it the default. If you want them to think twice, add friction.</p>
+    <p>Defaults are not neutral. They are choices disguised as absence of choice.</p>
+  </div>
 </article>
+<p class="nav-hint">type 'writing' to go back · or enter another command</p>
+    </template>
 
-<article>
-  <h3>>> On friction in tools</h3>
-  <time>2026-01-06</time>
-  <p>Friction isn't always bad. Some friction creates space for thought.</p>
+    <template id="tpl-article-5">
+<p class="cmd-echo">$ cat ~/writing/public.txt</p>
+<article class="full-article">
+  <h2>Writing in Public</h2>
+  <p class="article-meta">January 3, 2026</p>
+  
+  <div class="article-body">
+    <p>There is something clarifying about writing for an audience, even an imagined one. Private notes can be sloppy, incomplete. Public writing demands coherence.</p>
+    <p>You don't have to publish everything. But the act of writing as if you might — that changes the quality of your thinking.</p>
+  </div>
 </article>
+<p class="nav-hint">type 'writing' to go back · or enter another command</p>
+    </template>
 
-<article>
-  <h3>>> Defaults matter</h3>
-  <time>2026-01-04</time>
-  <p>Most people never change the defaults. This makes the default the most important design decision.</p>
+    <template id="tpl-article-6">
+<p class="cmd-echo">$ cat ~/writing/quiet.txt</p>
+<article class="full-article">
+  <h2>The value of quiet software</h2>
+  <p class="article-meta">December 28, 2025</p>
+  
+  <div class="article-body">
+    <p>Quiet software doesn't demand attention. It doesn't notify, badge, or interrupt. It waits until you need it.</p>
+    <p>Most software today is loud. It wants engagement, retention, daily active users. It measures success by how much of your time it captures.</p>
+    <p>Quiet software measures success differently. By how little it intrudes. By how quickly it gets out of your way.</p>
+  </div>
 </article>
+<p class="nav-hint">type 'writing' to go back · or enter another command</p>
+    </template>
 
-<article>
-  <h3>>> The value of quiet software</h3>
-  <time>2025-12-28</time>
-  <p>Quiet software doesn't demand attention. It doesn't notify, badge, or interrupt. It waits until you need it.</p>
+    <template id="tpl-article-7">
+<p class="cmd-echo">$ cat ~/writing/slow.txt</p>
+<article class="full-article">
+  <h2>Slow Tools</h2>
+  <p class="article-meta">December 20, 2025</p>
+  
+  <div class="article-body">
+    <p>Fast tools encourage fast work. They optimize for throughput, for shipping, for the next thing. But some work benefits from friction.</p>
+    <p>A pen is slower than a keyboard. But sometimes that slowness is the point. It gives your thoughts time to form.</p>
+    <p>Not everything needs to be optimized for speed.</p>
+  </div>
 </article>
-<p class="nav-hint">↑↓ history · tab autocomplete · type another command or 'help'</p>
+<p class="nav-hint">type 'writing' to go back · or enter another command</p>
     </template>
 
     <!-- WORK -->
     <template id="tpl-work">
-<p class="cmd-echo">$ ls -la ~/work/</p>
+<p class="cmd-echo">$ cat ~/work.txt</p>
 <h2># Work</h2>
 
-<h3>## Projects</h3>
-<ul class="project-list">
-  <li><span class="name">Personal Site</span> <span class="status">[in-progress]</span>
-    <p>This website. Plain HTML, CSS, minimal JavaScript.</p></li>
-  <li><span class="name">Plain Text Notes</span> <span class="status">[shipped]</span>
-    <p>A note-taking system using plain text files.</p></li>
-  <li><span class="name">Bookmark Exporter</span> <span class="status">[shipped]</span>
-    <p>A bookmarklet that exports browser bookmarks to plain text.</p></li>
-  <li><span class="name">Reading Tracker</span> <span class="status">[paused]</span>
-    <p>A web app to track books. Realized a text file works fine.</p></li>
-  <li><span class="name">Habit Tracker</span> <span class="status">[failed]</span>
-    <p>Scope crept, motivation dropped, abandoned.</p></li>
-</ul>
+<div class="kv-list">
+  <div class="kv-row"><span class="kv-key">shipping</span><span class="kv-val">Personal Site, Plain Text Notes, Bookmark Exporter</span></div>
+  <div class="kv-row"><span class="kv-key">paused</span><span class="kv-val">Reading Tracker — realized a text file works fine</span></div>
+  <div class="kv-row"><span class="kv-key">failed</span><span class="kv-val">Habit Tracker — scope crept, motivation dropped</span></div>
+  <div class="kv-row"><span class="kv-key">experiments</span><span class="kv-val">Minimal CSS Framework, Static Site Search, CSS-Only Dark Mode</span></div>
+  <div class="kv-row"><span class="kv-key">ideas</span><span class="kv-val">local-first sync, minimal email client, distraction-free writing tool</span></div>
+</div>
+<p class="nav-hint">type a section name to expand · or another command</p>
+    </template>
 
-<h3>## Experiments</h3>
-<ul class="project-list">
-  <li><span class="name">Minimal CSS Framework</span> <time>2026-01-05</time>
-    <p>CSS framework with no classes. Just semantic HTML.</p></li>
-  <li><span class="name">Static Site Search</span> <time>2025-12-10</time>
-    <p>Client-side search for static websites.</p></li>
-  <li><span class="name">CSS-Only Dark Mode</span> <time>2025-09-22</time>
-    <p>Dark mode toggle using only CSS.</p></li>
-</ul>
+    <!-- WORK SUB-SECTIONS -->
+    <template id="tpl-work-shipping">
+<p class="cmd-echo">$ cat ~/work/shipping.txt</p>
+<h2># Shipping</h2>
 
-<h3>## Ideas</h3>
-<ul class="idea-list">
-  <li><span class="name">Local-first sync system</span> <span class="status">[open]</span>
-    <p>Sync plain text files without a cloud service.</p></li>
-  <li><span class="name">Minimal email client</span> <span class="status">[cooking]</span>
-    <p>Text-based interface to Gmail/Fastmail APIs.</p></li>
-  <li><span class="name">Distraction-free writing tool</span> <span class="status">[open]</span>
-    <p>Just text. No formatting, no word count.</p></li>
-</ul>
-<p class="nav-hint">↑↓ history · tab autocomplete · type another command or 'help'</p>
+<div class="detail-list">
+  <div class="detail-item">
+    <span class="detail-name">→ Personal Site</span>
+    <span class="detail-status">[live]</span>
+    <p class="detail-desc">This website. An interactive terminal built with plain HTML, CSS, and minimal JavaScript. No frameworks, no dependencies.</p>
+  </div>
+  <div class="detail-item">
+    <span class="detail-name">→ Plain Text Notes</span>
+    <span class="detail-status">[shipped]</span>
+    <p class="detail-desc">A note-taking system using plain .txt files. Synced via iCloud/Dropbox. Works with any text editor. Simple and future-proof.</p>
+  </div>
+  <div class="detail-item">
+    <span class="detail-name">→ Bookmark Exporter</span>
+    <span class="detail-status">[shipped]</span>
+    <p class="detail-desc">A bookmarklet that exports browser bookmarks to plain text. One click, clean output, no accounts needed.</p>
+  </div>
+</div>
+<p class="nav-hint">type 'back' to return to work · or another command</p>
+    </template>
+
+    <template id="tpl-work-paused">
+<p class="cmd-echo">$ cat ~/work/paused.txt</p>
+<h2># Paused</h2>
+
+<div class="detail-list">
+  <div class="detail-item">
+    <span class="detail-name">→ Reading Tracker</span>
+    <span class="detail-status">[paused]</span>
+    <p class="detail-desc">Started building a web app to track books read. Halfway through, realized a simple text file does everything I need. Sometimes the best code is no code.</p>
+  </div>
+</div>
+<p class="nav-hint">type 'back' to return to work · or another command</p>
+    </template>
+
+    <template id="tpl-work-failed">
+<p class="cmd-echo">$ cat ~/work/failed.txt</p>
+<h2># Failed</h2>
+
+<div class="detail-list">
+  <div class="detail-item">
+    <span class="detail-name">→ Habit Tracker</span>
+    <span class="detail-status">[abandoned]</span>
+    <p class="detail-desc">Scope crept from "simple checkboxes" to "full analytics dashboard." Motivation dropped. Classic second-system effect. Learned: start smaller, ship faster.</p>
+  </div>
+</div>
+<p class="nav-hint">type 'back' to return to work · or another command</p>
+    </template>
+
+    <template id="tpl-work-experiments">
+<p class="cmd-echo">$ cat ~/work/experiments.txt</p>
+<h2># Experiments</h2>
+
+<div class="detail-list">
+  <div class="detail-item">
+    <span class="detail-name">→ Minimal CSS Framework</span>
+    <p class="detail-desc">CSS framework with no classes. Just semantic HTML that looks good by default. Exploring how far you can get without utility classes.</p>
+  </div>
+  <div class="detail-item">
+    <span class="detail-name">→ Static Site Search</span>
+    <p class="detail-desc">Client-side search for static websites. No server needed. Pre-builds an index at compile time, searches in the browser.</p>
+  </div>
+  <div class="detail-item">
+    <span class="detail-name">→ CSS-Only Dark Mode</span>
+    <p class="detail-desc">Dark mode toggle using only CSS and the :checked pseudo-class. No JavaScript. Persists via localStorage with a tiny inline script.</p>
+  </div>
+</div>
+<p class="nav-hint">type 'back' to return to work · or another command</p>
+    </template>
+
+    <template id="tpl-work-ideas">
+<p class="cmd-echo">$ cat ~/work/ideas.txt</p>
+<h2># Ideas</h2>
+
+<div class="detail-list">
+  <div class="detail-item">
+    <span class="detail-name">→ Local-first sync system</span>
+    <span class="detail-status">[exploring]</span>
+    <p class="detail-desc">Sync plain text files across devices without a cloud service. Peer-to-peer, encrypted, no accounts. Like Syncthing but simpler.</p>
+  </div>
+  <div class="detail-item">
+    <span class="detail-name">→ Minimal email client</span>
+    <span class="detail-status">[sketching]</span>
+    <p class="detail-desc">Text-based interface to Gmail/Fastmail APIs. Keyboard-driven. No HTML emails, just plain text. For people who want email to be boring again.</p>
+  </div>
+  <div class="detail-item">
+    <span class="detail-name">→ Distraction-free writing tool</span>
+    <span class="detail-status">[someday]</span>
+    <p class="detail-desc">Just text. No formatting buttons, no word count, no AI suggestions. A blank page that saves automatically.</p>
+  </div>
+</div>
+<p class="nav-hint">type 'back' to return to work · or another command</p>
     </template>
 
     <!-- LIFE -->
     <template id="tpl-life">
-<p class="cmd-echo">$ cat ~/life/*</p>
+<p class="cmd-echo">$ cat ~/life.txt</p>
 <h2># Life</h2>
 
-<h3>## Reading</h3>
-<ul class="reading-list">
-  <li><span class="name">Four Thousand Weeks</span> <span class="author">— Oliver Burkeman</span> <span class="status">[finished]</span></li>
-  <li><span class="name">Designing Calm Technology</span> <span class="author">— Amber Case</span> <span class="status">[reading]</span></li>
-  <li><span class="name">The Craftsman</span> <span class="author">— Richard Sennett</span> <span class="status">[to-read]</span></li>
-  <li><span class="name">Shape Up</span> <span class="author">— Ryan Singer</span> <span class="status">[finished]</span></li>
-  <li><span class="name">Deep Work</span> <span class="author">— Cal Newport</span> <span class="status">[finished]</span></li>
-</ul>
+<div class="kv-list">
+  <div class="kv-row"><span class="kv-key">reading</span><span class="kv-val">Designing Calm Technology (now), Four Thousand Weeks (done), The Craftsman (next)</span></div>
+  <div class="kv-row"><span class="kv-key">places</span><span class="kv-val">Tokyo '24, Lisbon '23, Edinburgh '22, Amsterdam '22</span></div>
+  <div class="kv-row"><span class="kv-key">fav books</span><span class="kv-val">Siddhartha, Meditations, The Elements of Style, The War of Art</span></div>
+  <div class="kv-row"><span class="kv-key">fav films</span><span class="kv-val">Lost in Translation, Blade Runner, Spirited Away, Jiro Dreams of Sushi</span></div>
+  <div class="kv-row"><span class="kv-key">fav music</span><span class="kv-val">Kind of Blue, In Rainbows, Music for Airports</span></div>
+</div>
+<p class="nav-hint">type a section name to expand · or another command</p>
+    </template>
 
-<h3>## Places</h3>
-<ul class="places-list">
-  <li><span class="name">Tokyo</span> <time>2024</time> <p>Quiet in unexpected ways. Vending machines everywhere.</p></li>
-  <li><span class="name">Lisbon</span> <time>2023</time> <p>Hills and light. The yellow trams. Tiles everywhere.</p></li>
-  <li><span class="name">Edinburgh</span> <time>2022</time> <p>Two cities stacked on each other. Second-hand bookshops.</p></li>
-  <li><span class="name">Amsterdam</span> <time>2022</time> <p>Bikes as infrastructure. A city designed for people.</p></li>
-</ul>
+    <!-- LIFE SUB-SECTIONS -->
+    <template id="tpl-life-reading">
+<p class="cmd-echo">$ cat ~/life/reading.txt</p>
+<h2># Reading</h2>
 
-<h3>## Favorites</h3>
-<details>
-  <summary>[+] Books</summary>
-  <ul>
-    <li>Siddhartha — Hermann Hesse</li>
-    <li>Meditations — Marcus Aurelius</li>
-    <li>The Elements of Style — Strunk & White</li>
-    <li>The War of Art — Steven Pressfield</li>
-  </ul>
-</details>
-<details>
-  <summary>[+] Films</summary>
-  <ul>
-    <li>Lost in Translation — Sofia Coppola</li>
-    <li>Blade Runner — Ridley Scott</li>
-    <li>Spirited Away — Hayao Miyazaki</li>
-    <li>Jiro Dreams of Sushi — David Gelb</li>
-  </ul>
-</details>
-<details>
-  <summary>[+] Music</summary>
-  <ul>
-    <li>Kind of Blue — Miles Davis</li>
-    <li>In Rainbows — Radiohead</li>
-    <li>Ambient 1: Music for Airports — Brian Eno</li>
-  </ul>
-</details>
-<p class="nav-hint">↑↓ history · tab autocomplete · type another command or 'help'</p>
+<div class="detail-list">
+  <div class="detail-item">
+    <span class="detail-name">→ Designing Calm Technology</span>
+    <span class="detail-status">[reading]</span>
+    <p class="detail-desc">Amber Case. Technology should inform, not demand attention. Exploring how to design for the periphery of awareness.</p>
+  </div>
+  <div class="detail-item">
+    <span class="detail-name">→ Four Thousand Weeks</span>
+    <span class="detail-status">[finished]</span>
+    <p class="detail-desc">Oliver Burkeman. Time management for mortals. The average human lifespan is about 4,000 weeks. What will you do with yours?</p>
+  </div>
+  <div class="detail-item">
+    <span class="detail-name">→ The Craftsman</span>
+    <span class="detail-status">[next]</span>
+    <p class="detail-desc">Richard Sennett. On the value of making things well for their own sake. Craftsmanship as a way of life.</p>
+  </div>
+  <div class="detail-item">
+    <span class="detail-name">→ Shape Up</span>
+    <span class="detail-status">[finished]</span>
+    <p class="detail-desc">Ryan Singer. Basecamp's approach to product development. Fixed time, variable scope. Shaping before building.</p>
+  </div>
+  <div class="detail-item">
+    <span class="detail-name">→ Deep Work</span>
+    <span class="detail-status">[finished]</span>
+    <p class="detail-desc">Cal Newport. The ability to focus without distraction is increasingly rare and valuable. Protecting attention as a competitive advantage.</p>
+  </div>
+</div>
+<p class="nav-hint">type 'back' to return to life · or another command</p>
+    </template>
+
+    <template id="tpl-life-places">
+<p class="cmd-echo">$ cat ~/life/places.txt</p>
+<h2># Places</h2>
+
+<div class="detail-list">
+  <div class="detail-item">
+    <span class="detail-name">→ Tokyo</span>
+    <span class="detail-status">[2024]</span>
+    <p class="detail-desc">Quiet in unexpected ways. Vending machines on every corner. The trains run on time. A city that works.</p>
+  </div>
+  <div class="detail-item">
+    <span class="detail-name">→ Lisbon</span>
+    <span class="detail-status">[2023]</span>
+    <p class="detail-desc">Hills and light. The yellow trams. Tiles everywhere. Pastéis de nata for breakfast. A city that feels lived-in.</p>
+  </div>
+  <div class="detail-item">
+    <span class="detail-name">→ Edinburgh</span>
+    <span class="detail-status">[2022]</span>
+    <p class="detail-desc">Two cities stacked on each other — Old Town and New Town. Second-hand bookshops. Rain that comes sideways.</p>
+  </div>
+  <div class="detail-item">
+    <span class="detail-name">→ Amsterdam</span>
+    <span class="detail-status">[2022]</span>
+    <p class="detail-desc">Bikes as infrastructure. Narrow houses, steep stairs. A city designed for people, not cars. Stroopwafels.</p>
+  </div>
+</div>
+<p class="nav-hint">type 'back' to return to life · or another command</p>
+    </template>
+
+    <template id="tpl-life-books">
+<p class="cmd-echo">$ cat ~/life/books.txt</p>
+<h2># Favorite Books</h2>
+
+<div class="detail-list">
+  <div class="detail-item">
+    <span class="detail-name">→ Siddhartha</span>
+    <span class="detail-status">Hermann Hesse</span>
+    <p class="detail-desc">A journey toward self-discovery. The river as teacher. "Knowledge can be communicated, but not wisdom."</p>
+  </div>
+  <div class="detail-item">
+    <span class="detail-name">→ Meditations</span>
+    <span class="detail-status">Marcus Aurelius</span>
+    <p class="detail-desc">Private notes from a Roman emperor. Stoic philosophy as daily practice. Written for himself, relevant 2000 years later.</p>
+  </div>
+  <div class="detail-item">
+    <span class="detail-name">→ The Elements of Style</span>
+    <span class="detail-status">Strunk & White</span>
+    <p class="detail-desc">Omit needless words. The classic guide to clear writing. 100 pages that improve everything you write.</p>
+  </div>
+  <div class="detail-item">
+    <span class="detail-name">→ The War of Art</span>
+    <span class="detail-status">Steven Pressfield</span>
+    <p class="detail-desc">On resistance and the creative process. The enemy is not laziness but fear. Show up and do the work.</p>
+  </div>
+</div>
+<p class="nav-hint">type 'back' to return to life · or another command</p>
+    </template>
+
+    <template id="tpl-life-films">
+<p class="cmd-echo">$ cat ~/life/films.txt</p>
+<h2># Favorite Films</h2>
+
+<div class="detail-list">
+  <div class="detail-item">
+    <span class="detail-name">→ Lost in Translation</span>
+    <span class="detail-status">Sofia Coppola</span>
+    <p class="detail-desc">Two strangers in Tokyo. Jet lag and loneliness. Connection without resolution. The ending that says everything by saying nothing.</p>
+  </div>
+  <div class="detail-item">
+    <span class="detail-name">→ Blade Runner</span>
+    <span class="detail-status">Ridley Scott</span>
+    <p class="detail-desc">What does it mean to be human? Rain-soaked neon future. "All those moments will be lost in time, like tears in rain."</p>
+  </div>
+  <div class="detail-item">
+    <span class="detail-name">→ Spirited Away</span>
+    <span class="detail-status">Hayao Miyazaki</span>
+    <p class="detail-desc">A girl finds courage in a spirit world. Hand-drawn animation at its peak. Every frame a painting.</p>
+  </div>
+  <div class="detail-item">
+    <span class="detail-name">→ Jiro Dreams of Sushi</span>
+    <span class="detail-status">David Gelb</span>
+    <p class="detail-desc">An 85-year-old sushi master still trying to improve. Dedication as philosophy. What it means to pursue perfection.</p>
+  </div>
+</div>
+<p class="nav-hint">type 'back' to return to life · or another command</p>
+    </template>
+
+    <template id="tpl-life-music">
+<p class="cmd-echo">$ cat ~/life/music.txt</p>
+<h2># Favorite Music</h2>
+
+<div class="detail-list">
+  <div class="detail-item">
+    <span class="detail-name">→ Kind of Blue</span>
+    <span class="detail-status">Miles Davis</span>
+    <p class="detail-desc">Modal jazz. Recorded in two sessions. The best-selling jazz album of all time. Music that sounds like late night.</p>
+  </div>
+  <div class="detail-item">
+    <span class="detail-name">→ In Rainbows</span>
+    <span class="detail-status">Radiohead</span>
+    <p class="detail-desc">Released as pay-what-you-want. Warm and human after years of cold electronics. "Reckoner" as a perfect song.</p>
+  </div>
+  <div class="detail-item">
+    <span class="detail-name">→ Ambient 1: Music for Airports</span>
+    <span class="detail-status">Brian Eno</span>
+    <p class="detail-desc">Music designed to be ignored. Background listening as an art form. Created to calm nervous flyers.</p>
+  </div>
+</div>
+<p class="nav-hint">type 'back' to return to life · or another command</p>
     </template>
 
     <!-- LINKS -->
@@ -275,20 +564,26 @@ Aliases:
 <p class="cmd-echo">$ cat ~/about.txt</p>
 <h2># About</h2>
 
-<p>I write about design, tools, and process. I'm interested in how the things we build shape the way we think.</p>
-<p>This site is where I work through ideas in public. Some posts are finished. Some are drafts. All are subject to revision.</p>
+<div class="about-intro">
+  <p>I write about design, tools, and process. Interested in how the things we build shape the way we think.</p>
+  <p>This site is where I work through ideas in public. Some posts are finished. Some are drafts. All are subject to revision.</p>
+</div>
 
 <h3>## This Site</h3>
-<p>Built with plain HTML, CSS, and minimal JavaScript. No build tools, no frameworks, no dependencies.</p>
-<ul>
-  <li>Type: System monospace fonts</li>
-  <li>Colors: Green (#00ff66) on black (#0a0a0a)</li>
-  <li>Interface: Interactive terminal</li>
-  <li>Source: View-source friendly</li>
-</ul>
+<div class="kv-list">
+  <div class="kv-row"><span class="kv-key">stack</span><span class="kv-val">HTML, CSS, minimal JavaScript</span></div>
+  <div class="kv-row"><span class="kv-key">fonts</span><span class="kv-val">SF Mono, Fira Code, system monospace</span></div>
+  <div class="kv-row"><span class="kv-key">colors</span><span class="kv-val">green (#00ff66) on black (#0a0a0a)</span></div>
+  <div class="kv-row"><span class="kv-key">interface</span><span class="kv-val">interactive terminal</span></div>
+  <div class="kv-row"><span class="kv-key">source</span><span class="kv-val">view-source friendly, no build tools</span></div>
+</div>
 
 <h3>## Contact</h3>
-<p>Email: <a href="mailto:hello@example.com">hello@example.com</a></p>
+<div class="kv-list">
+  <div class="kv-row"><span class="kv-key">email</span><span class="kv-val"><a href="mailto:hello@example.com">hello@example.com</a></span></div>
+  <div class="kv-row"><span class="kv-key">twitter</span><span class="kv-val"><a href="https://x.com/TechWithArian" target="_blank">@TechWithArian</a></span></div>
+  <div class="kv-row"><span class="kv-key">github</span><span class="kv-val"><a href="https://github.com/Tariq580" target="_blank">Tariq580</a></span></div>
+</div>
 <p class="nav-hint">↑↓ history · tab autocomplete · type another command or 'help'</p>
     </template>
 

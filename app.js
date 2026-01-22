@@ -18,7 +18,52 @@
   // Configuration
   // ==========================================================================
 
-  const COMMANDS = ['help', 'now', 'writing', 'work', 'life', 'links', 'about', 'clear', 'ls'];
+  const COMMANDS = ['help', 'now', 'writing', 'work', 'life', 'links', 'about', 'clear', 'ls', 'read', 'back'];
+  const TOTAL_ARTICLES = 7; // Number of articles in writing section
+
+  // Section mappings for drill-down navigation
+  const SECTIONS = {
+    'now': {
+      'working on': 'now-working',
+      'working': 'now-working',
+      'reading': 'now-reading',
+      'thinking': 'now-thinking'
+    },
+    'work': {
+      'shipping': 'work-shipping',
+      'paused': 'work-paused',
+      'failed': 'work-failed',
+      'experiments': 'work-experiments',
+      'ideas': 'work-ideas'
+    },
+    'life': {
+      'reading': 'life-reading',
+      'places': 'life-places',
+      'fav books': 'life-books',
+      'books': 'life-books',
+      'fav films': 'life-films',
+      'films': 'life-films',
+      'fav music': 'life-music',
+      'music': 'life-music'
+    }
+  };
+
+  // Reverse mapping: sub-section -> parent
+  const PARENT_MAP = {
+    'now-working': 'now',
+    'now-reading': 'now',
+    'now-thinking': 'now',
+    'work-shipping': 'work',
+    'work-paused': 'work',
+    'work-failed': 'work',
+    'work-experiments': 'work',
+    'work-ideas': 'work',
+    'life-reading': 'life',
+    'life-places': 'life',
+    'life-books': 'life',
+    'life-films': 'life',
+    'life-music': 'life'
+  };
   const ALIASES = {
     'cat now.txt': 'now',
     'cat ~/now.txt': 'now',
@@ -53,7 +98,9 @@
     history: [],
     historyIndex: -1,
     isTyping: false,
-    hasBooted: false
+    hasBooted: false,
+    currentSection: null,  // Track which main section user is in (now, work, life)
+    currentSubSection: null  // Track if user is in a sub-section
   };
 
   // ==========================================================================
@@ -218,38 +265,117 @@
     // Handle commands
     let template = null;
 
-    switch (resolvedCmd) {
-      case 'clear':
-        // Already cleared
-        return;
-      
-      case 'boot':
-        await runBootSequence();
-        return;
-      
-      case 'help':
-      case 'now':
-      case 'writing':
-      case 'work':
-      case 'life':
-      case 'links':
-      case 'about':
-        template = getTemplate(resolvedCmd);
-        break;
-      
-      case 'sudo':
-      case 'sudo su':
-      case 'sudo -i':
-      case 'su':
-        template = getTemplate('sudo');
-        break;
-      
-      default:
-        // Unknown command
-        template = getTemplate('unknown');
-        if (template) {
-          template = template.replace(/\{cmd\}/g, escapeHtml(trimmedCmd));
+    // Check for read <n> command
+    const readMatch = trimmedCmd.match(/^read\s+(\d+)$/);
+    if (readMatch) {
+      const articleNum = parseInt(readMatch[1], 10);
+      if (articleNum >= 1 && articleNum <= TOTAL_ARTICLES) {
+        template = getTemplate(`article-${articleNum}`);
+        state.currentSection = 'writing';
+        state.currentSubSection = `article-${articleNum}`;
+      } else {
+        template = `<p class="cmd-echo">$ read ${articleNum}</p><p class="error">Article not found. Use 'writing' to see available articles (1-${TOTAL_ARTICLES}).</p>`;
+      }
+    } 
+    // Check for back command
+    else if (resolvedCmd === 'back') {
+      if (state.currentSubSection && PARENT_MAP[state.currentSubSection]) {
+        // Go back to parent section
+        const parent = PARENT_MAP[state.currentSubSection];
+        template = getTemplate(parent);
+        state.currentSection = parent;
+        state.currentSubSection = null;
+      } else if (state.currentSection === 'writing' && state.currentSubSection) {
+        // Go back from article to writing list
+        template = getTemplate('writing');
+        state.currentSubSection = null;
+      } else {
+        template = `<p class="cmd-echo">$ back</p><p class="hint">Nothing to go back to. Type 'help' for commands.</p>`;
+      }
+    }
+    // Check for section drill-down (e.g., "working on" when in "now")
+    else if (state.currentSection && SECTIONS[state.currentSection] && SECTIONS[state.currentSection][trimmedCmd]) {
+      const subSection = SECTIONS[state.currentSection][trimmedCmd];
+      template = getTemplate(subSection);
+      state.currentSubSection = subSection;
+    }
+    // Check if command is a section name from any parent (allow direct access)
+    else if (checkAllSections(trimmedCmd)) {
+      const result = checkAllSections(trimmedCmd);
+      template = getTemplate(result.subSection);
+      state.currentSection = result.parent;
+      state.currentSubSection = result.subSection;
+    }
+    else {
+      switch (resolvedCmd) {
+        case 'clear':
+          // Already cleared
+          state.currentSection = null;
+          state.currentSubSection = null;
+          return;
+        
+        case 'boot':
+          state.currentSection = null;
+          state.currentSubSection = null;
+          await runBootSequence();
+          return;
+        
+        case 'help':
+          state.currentSection = null;
+          state.currentSubSection = null;
+          template = getTemplate(resolvedCmd);
+          break;
+        
+        case 'now':
+        case 'work':
+        case 'life':
+          state.currentSection = resolvedCmd;
+          state.currentSubSection = null;
+          template = getTemplate(resolvedCmd);
+          break;
+        
+        case 'writing':
+          state.currentSection = 'writing';
+          state.currentSubSection = null;
+          template = getTemplate(resolvedCmd);
+          break;
+        
+        case 'links':
+        case 'about':
+          state.currentSection = null;
+          state.currentSubSection = null;
+          template = getTemplate(resolvedCmd);
+          break;
+        
+        case 'read':
+          // Just "read" without number
+          template = `<p class="cmd-echo">$ read</p><p class="error">Usage: read &lt;n&gt;</p><p class="hint">Type 'writing' first to see available articles.</p>`;
+          break;
+        
+        case 'sudo':
+        case 'sudo su':
+        case 'sudo -i':
+        case 'su':
+          template = getTemplate('sudo');
+          break;
+        
+        default:
+          // Unknown command
+          template = getTemplate('unknown');
+          if (template) {
+            template = template.replace(/\{cmd\}/g, escapeHtml(trimmedCmd));
+          }
+      }
+    }
+
+    // Helper function to check all sections for a command
+    function checkAllSections(cmd) {
+      for (const [parent, sections] of Object.entries(SECTIONS)) {
+        if (sections[cmd]) {
+          return { parent, subSection: sections[cmd] };
         }
+      }
+      return null;
     }
 
     if (template) {

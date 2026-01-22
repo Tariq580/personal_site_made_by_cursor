@@ -6,6 +6,7 @@
   --green: #00ff66;
   --green-dim: #00aa44;
   --green-bright: #33ff88;
+  --green-soft: #a8e6cf;  /* Softer green for long text */
   --black: #0a0a0a;
   --dark: #111;
   --gray: #1a1a1a;
@@ -518,6 +519,158 @@ details ul {
 .autocomplete-item.selected {
   background: var(--green-dim);
   color: var(--black);
+}
+
+/* ==========================================================================
+   Key-Value Layout (for Now, Work, Life)
+   ========================================================================== */
+
+.kv-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.kv-row {
+  display: flex;
+  gap: 1rem;
+  line-height: 1.6;
+}
+
+.kv-key {
+  color: var(--green-dim);
+  min-width: 100px;
+  flex-shrink: 0;
+}
+
+.kv-key::after {
+  content: "";
+}
+
+.kv-val {
+  color: var(--green);
+}
+
+/* ==========================================================================
+   Article List (for Writing)
+   ========================================================================== */
+
+.article-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.article-row {
+  display: flex;
+  align-items: baseline;
+  gap: 0.75rem;
+}
+
+.article-num {
+  color: var(--green-dim);
+  font-size: 0.85rem;
+  min-width: 28px;
+}
+
+.article-title {
+  color: var(--green-bright);
+  flex: 1;
+}
+
+.article-date {
+  color: var(--green-dim);
+  font-size: 0.8rem;
+}
+
+/* ==========================================================================
+   Full Article View
+   ========================================================================== */
+
+.full-article {
+  max-width: 600px;
+}
+
+.full-article h2 {
+  color: var(--green-bright);
+  font-size: 1.1rem;
+  margin-bottom: 0.25rem;
+}
+
+.article-meta {
+  color: var(--green-dim);
+  font-size: 0.8rem;
+  margin-bottom: 1.5rem;
+}
+
+.article-body {
+  color: var(--green-soft);
+  line-height: 1.8;
+  font-size: 0.95rem;
+}
+
+.article-body p {
+  margin-bottom: 1rem;
+}
+
+.article-body p:last-child {
+  margin-bottom: 0;
+}
+
+/* ==========================================================================
+   Detail List (for sub-sections)
+   ========================================================================== */
+
+.detail-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.detail-item {
+  padding-bottom: 1rem;
+  border-bottom: 1px dashed var(--gray);
+}
+
+.detail-item:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.detail-name {
+  color: var(--green-bright);
+  display: inline;
+}
+
+.detail-status {
+  color: var(--green-dim);
+  font-size: 0.8rem;
+  margin-left: 0.5rem;
+}
+
+.detail-desc {
+  color: var(--green-soft);
+  line-height: 1.7;
+  margin: 0.5rem 0 0 1.25rem;
+  font-size: 0.9rem;
+}
+
+/* ==========================================================================
+   About Page Intro
+   ========================================================================== */
+
+.about-intro {
+  margin-bottom: 1.5rem;
+}
+
+.about-intro p {
+  color: var(--green-soft);
+  line-height: 1.7;
+  margin-bottom: 0.75rem;
+}
+
+.about-intro p:last-child {
+  margin-bottom: 0;
 }
 
 /* ==========================================================================
