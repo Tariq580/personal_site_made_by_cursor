@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="A minimal personal terminal — type commands to explore.">
+  <title>terminal</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- Terminal Window -->
+  <div class="terminal">
+    <div class="terminal-header">
+      <span class="terminal-btn red"></span>
+      <span class="terminal-btn yellow"></span>
+      <span class="terminal-btn green"></span>
+      <span class="terminal-title">arian@site:~</span>
+    </div>
+    
+    <div class="terminal-body">
+      <div id="output" class="output-area"></div>
+      
+      <div class="input-line">
+        <span class="prompt-symbol">$</span>
+        <input type="text" id="cmd-input" autocomplete="off" autocapitalize="off" spellcheck="false" autofocus>
+      </div>
+    </div>
+  </div>
+
+  <!-- Hidden Content Templates -->
+  <div id="templates" style="display:none;">
+
+    <!-- BOOT SEQUENCE -->
+    <template id="tpl-boot">
+<pre id="ascii-typing" class="ascii-banner"></pre>
+<p class="intro-msg"></p>
+<p class="welcome-msg"></p>
+    </template>
+
+    <!-- HELP -->
+    <template id="tpl-help">
+<p class="cmd-echo">$ help</p>
+<pre class="help-text">
+Available commands:
+
+  now        what I'm currently up to
+  writing    notes and essays
+  work       projects, experiments, ideas
+  life       reading, places, favorites
+  links      socials and bookmarks
+  about      about me and this site
+  
+  clear      clear the terminal
+  help       show this message
+</pre>
+    </template>
+
+    <!-- NOW -->
+    <template id="tpl-now">
+<p class="cmd-echo">$ cat ~/now.txt</p>
+<h2># Now</h2>
+<p class="meta">Last updated: January 2026</p>
+
+<div class="kv-list">
+<!-- NOW_KV -->
+</div>
+<p class="nav-hint">type a section name to expand · or another command</p>
+    </template>
+
+<!-- NOW_DETAILS -->
+
+    <!-- WRITING -->
+    <template id="tpl-writing">
+<p class="cmd-echo">$ ls ~/writing/</p>
+<h2># Writing</h2>
+<p class="meta">Type <span class="cmd-hint">read &lt;n&gt;</span> to open an article.</p>
+
+<div class="article-list">
+<!-- WRITING_LIST -->
+</div>
+<p class="nav-hint">↑↓ history · tab autocomplete · type another command or 'help'</p>
+    </template>
+
+<!-- ARTICLE_TEMPLATES -->
+
+    <!-- WORK -->
+    <template id="tpl-work">
+<p class="cmd-echo">$ cat ~/work.txt</p>
+<h2># Work</h2>
+
+<div class="kv-list">
+<!-- WORK_KV -->
+</div>
+<p class="nav-hint">type a section name to expand · or another command</p>
+    </template>
+
+<!-- WORK_DETAILS -->
+
+    <!-- LIFE -->
+    <template id="tpl-life">
+<p class="cmd-echo">$ cat ~/life.txt</p>
+<h2># Life</h2>
+
+<div class="kv-list">
+<!-- LIFE_KV -->
+</div>
+<p class="nav-hint">type a section name to expand · or another command</p>
+    </template>
+
+<!-- LIFE_DETAILS -->
+
+    <!-- LINKS -->
+    <template id="tpl-links">
+<p class="cmd-echo">$ cat ~/bookmarks.txt</p>
+<h2># Links</h2>
+
+<!-- LINKS_SECTIONS -->
+<p class="nav-hint">↑↓ history · tab autocomplete · type another command or 'help'</p>
+    </template>
+
+    <!-- ABOUT -->
+    <template id="tpl-about">
+<p class="cmd-echo">$ cat ~/about.txt</p>
+<h2># About</h2>
+
+<div class="about-intro">
+<!-- ABOUT_INTRO -->
+</div>
+
+<h3>## This Site</h3>
+<div class="kv-list">
+<!-- ABOUT_SITE_KV -->
+</div>
+
+<h3>## Contact</h3>
+<div class="kv-list">
+<!-- ABOUT_CONTACT_KV -->
+</div>
+<p class="nav-hint">↑↓ history · tab autocomplete · type another command or 'help'</p>
+    </template>
+
+    <!-- EASTER EGGS -->
+    <template id="tpl-sudo">
+<p class="cmd-echo">$ sudo</p>
+<p class="error">Permission denied. Nice try though. 😏</p>
+    </template>
+
+    <template id="tpl-unknown">
+<p class="cmd-echo">$ {cmd}</p>
+<p class="error">Command not found: {cmd}</p>
+<p class="hint">Type 'help' for available commands.</p>
+    </template>
+
+    <template id="tpl-clear">
+    </template>
+
+  </div>
+
+  <!-- No-JS Fallback -->
+  <noscript>
+    <div class="noscript-fallback">
+      <h1>Terminal requires JavaScript</h1>
+      <p>Please enable JavaScript to use this interactive terminal, or view the <a href="https://github.com/Tariq580">source on GitHub</a>.</p>
+    </div>
+  </noscript>
+
+  <script src="app.js"></script>
+</body>
+</html>
