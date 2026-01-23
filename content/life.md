@@ -3,26 +3,22 @@ title: Life
 sections:
   - name: reading
     items:
-      - name: Designing Calm Technology
-        author: Amber Case
-        status: reading
-        desc: Technology should inform, not demand attention. Exploring how to design for the periphery of awareness.
-      - name: Four Thousand Weeks
-        author: Oliver Burkeman
+      - name: To kill a mockingbird
+        author: Harper Lee 
         status: finished
-        desc: Time management for mortals. The average human lifespan is about 4,000 weeks. What will you do with yours?
-      - name: The Craftsman
-        author: Richard Sennett
-        status: next
-        desc: On the value of making things well for their own sake. Craftsmanship as a way of life.
-      - name: Shape Up
-        author: Ryan Singer
+        desc: "my first fiction book and it was fantastic. I didnt know fiction books would be that interesting and gripping but, wow it was good. I learned about so many things from this book such as recism, social morals and standard of 1900s. I found out about the history of 'nigga' or 'nigger' and i was stunned about people's behevior with these colored poeple. As I've been aware of the racial issues going on in Usa throughout these years, I did not know it was that serious back then. Everyone had this idea that crime = black person. White people were inoccent no matter what they did and black were guilty for no reason. There were people, hating on Adolf hittler for mistreating and punshing the jews, while they were doing the same with black poeple in their town."
+      - name: Atomic habits
+        author: James Clear
         status: finished
-        desc: Basecamp's approach to product development. Fixed time, variable scope. Shaping before building.
-      - name: Deep Work
-        author: Cal Newport
+        desc: "One of the best nonfiction book I've read in my life. It changed my view about habits and consistency. It taught me about the importance of little actions taken daily with no excuse and their impact on our lifes over a long period of time. I learned how to start a new habit and end the bad ones by using various techniques and methods such as habit stacking, understanding the cue of your habits and eliminating it from your environment. As a summary, it says design your environment in a way you can accomplish your habits unconsciously without any effort. For example, you need to go for a run every morning, therefore in order to do this action unconsciously you can do things like putting your running shoes in your room where you can see it or if you want to read a book every evening, you can put your book in your bed during the day so whenever you enter your room at the evening you can see it right away and then it's very unlikely that you will neglect and do not do that action." 
+      - name: 48 laws of power
+        author: Robert Green
+        status: Reading 
+        desc: so far it's fantastic. 
+      - name: Rich dad and poor dad
+        author: Robert Kiyosaki
         status: finished
-        desc: The ability to focus without distraction is increasingly rare and valuable. Protecting attention as a competitive advantage.
+        desc: A different perspective on money and wealth. 
   - name: places
     items:
       - name: Tokyo

@@ -29,8 +29,18 @@ function readMarkdownFiles(dir) {
 
 // Generate article list for writing section
 function generateWritingList(articles) {
-  return articles.map((article, index) => `
-  <div class="article-row"><span class="article-num">[${index + 1}]</span><span class="article-title">${article.title}</span><span class="article-date">${article.date}</span></div>`).join('');
+  return articles.map((article, index) => {
+    // Format date as "Day Mon DD YYYY" (e.g., "Thu Jan 08 2026")
+    const date = new Date(article.date);
+    const dateStr = date.toLocaleDateString('en-US', { 
+      weekday: 'short', 
+      year: 'numeric', 
+      month: 'short', 
+      day: '2-digit' 
+    });
+    return `
+  <div class="article-row"><span class="article-num">[${index + 1}]</span><span class="article-title">${article.title}</span><span class="article-date">${dateStr}</span></div>`;
+  }).join('');
 }
 
 // Generate individual article templates
