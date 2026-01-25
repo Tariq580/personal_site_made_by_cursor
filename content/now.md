@@ -12,12 +12,12 @@ sections:
         desc: Taking a break from client work to focus on what interests me. Building tools I want to use.
   - name: reading
     items:
-      - name: Four Thousand Weeks
-        status: finished
-        desc: Oliver Burkeman on time management and mortality. Still thinking about the idea that we'll never "clear the decks" — there will always be more to do than time allows.
-      - name: Designing Calm Technology
+      - name: 48 laws of power 
+        status: in progress 
+        desc: robert green introduces the secrets to achieve power no matter what you do in your life.  
+      - name: how to stop overthinking 
         status: in progress
-        desc: Amber Case on technology that respects human attention. The idea of "calm" as a design principle resonates deeply.
+        desc: The author talks about overthinking , the roots and origin of overthinking and how to free yourself from it. 
   - name: thinking
     items:
       - name: productivity vs meaning
